@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css13</title>
+<style type="text/css">
+	
+	body{
+		color: #333;
+		margin: 20px;
+	}
+	li{
+		list-style: none;
+		width: 100px;
+		height: 70px;
+		text-align: center;
+		float: left;
+		padding-top: 30px;
+		border-radius: 10px 20px 30px 40px;	/* 시계방향으로 px만큼 깍여나간다.  50px */
+		-webkit-border-radius: 10px 20px 30px 40px;
+		-moz-border-radius: 10px 20px 30px 40px;
+		-ms-border-radius: 10px 20px 30px 40px;
+		-o-border-radius: 10px 20px 30px 40px;
+		box-shadow: inset 20px 30px 20px 1px rgba(18,52,86,0.8);
+	}
+	/* 
+		웹 브라우저마다 특정 무언가를 다르게 표시하는 경우가 있기때문에 따로따로 지정해줄 수 있다 !!
+		webkit : 구글, 사파리
+		moz : 파이어폭스
+		ms : 익스플로러
+		o : 오페라
+	
+	 */
+	.c1{background-color: red;}
+	.c2{background-color: blue;}
+	.c3{background-color: green;}
+	.c4{background-color: yellow;}
+	
+	
+</style>
+
+</head>
+<body>
+
+	<ul>
+		<li class="c1">J</li>
+		<li class="c2">A</li>
+		<li class="c3">V</li>
+		<li class="c4">A</li>	
+	</ul>
+</body>
+</html>

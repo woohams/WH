@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css14</title>
+
+<style type="text/css">
+
+	div{
+		width: 200px;
+		height: 200px;
+		border: 1px solid red;
+	}
+	
+	#bgsize{
+		background-image: url("resources/image01.jpg");
+		background-size: cover;	/* background-size: cover; */
+	}
+	
+	#multibg{
+		background-image: url("resources/asdf.png"), url("resources/image01.jpg");
+		background-size: cover;
+	}
+	
+	#bgclip{
+		border: 10px dotted black;
+		padding: 50px;
+		background-color: skyblue;
+		/* background-clip: content-box; */
+		/* background-clip: border-box; */
+		background-clip: padding-box;
+	}
+	#txtshadow{
+		text-shadow: 1px 2px #ccc;
+	}
+	@font-face{
+		font-family: "Goyang";
+		src:url("resources/Goyang.ttf") format("truetype");
+	}
+	
+	#goyang{
+		font-family: "Goyang";
+		font-size: 30px;		
+	}
+
+</style>
+</head>
+<body>
+
+	<h1>background-size</h1>
+	<div id="bgsize">background-size</div>
+	
+	<h1>multi-background</h1>
+	<div id="multibg">multi-background</div>
+	
+	<h1>background-clip</h1>
+	<div id="bgclip">background-clip</div>
+	
+	<h1>text-shadow</h1>
+	<div id="txtshadow">text-shadow</div>
+	
+	<h1>font-face</h1>
+	<div id="goyang">고양시 고양체 이쁘다</div>
+
+</body>
+</html>
