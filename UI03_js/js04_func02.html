@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function func01() {
+		alert("명시적 함수!");
+	}
+	var func02 = function() {	//function 해놓고 이름 없다. 이걸 익명 함수라고 한다. 
+								//함수를 변수에 담았고 func02는 함수 타입이 된다.
+		alert("익명 함수!!");		//밑에서 변수에다가 () 붙여줬더니 익명 함수가 실행돼서 출력이 됐다. 함수 타입의 변수는 이렇게도 실행 가능.
+
+		
+
+	}
+	
+	
+///////////////////////////////////////////////////////////////// 중요-------------------
+
+	function literalPrn(literal) {			//1. literalPrn은 파라미터를 받게 되어있다. 파라미터에 뭔가 문자 값을 넣어서 실행하자 라고 되어있다.
+											//3. 익명 함수가 들어오면서 literal 변수가 함수 타입이 되었다.
+											//4. func02에서 보듯 함수타입 변수(); 해주면 실행이 된다.(밑에 body에서 실행했다.)
+		literal("안녕하세요 리터럴 입니다.");
+	}
+	function func03() {
+		literalPrn(function(msg) { 			//2. literalPrn 에 익명 '함수'를 전달하고 있다.
+			alert(msg);						//5. 위 익명 함수에 파라미터로 "안녕하세요 리터럴 입니다."가 들어갔고 그 메세지를 경고창에 띄웠다.
+		});
+	}
+	function valTest() {					//밑에 아규먼트가 3개 들어오지만 여기 파라미터 설정 안할거임
+		var val = "";
+	
+		//arguments : arg 갯수만큼 배열 형태로 리턴 해주는 애
+		/* 알아서 파라미터로 받아서 값을 가지고 있는 애다. */
+		for (var i = 0; i < arguments.length; i++) {
+			val += arguments[i] + "";
+		}
+		alert(val);
+	}
+	
+	function closureTest(val) {
+
+		var msg = "재밌군요!";
+		function addVal() {					//함수안에다가 또 함수를 넣고
+			alert(val + "" + msg);
+
+		}
+		return addVal;						//바로 실행할 수도 있지만 함수 값을 리턴 하는 것도 가능하다.
+
+	}										//******************어떤 기능(함수)을 값으로 생각할 수 있다.********************
+											//함수도 값이므로 여기저기 주고 받을 수 있다.
+	
+	
+	
+	var amEdu = closureTest("semiproject");
+
+	function pmEdu(msg) {
+		closureTest(msg)();					//함수만 리턴돼서 전달 됐고 closureTest(msg)이건 그냥 값이고 값();이렇게 해야 실행 되기 때문에 () 하나 더 붙였다.
+	}	
+</script>
+
+</head>
+<body>
+
+
+	<h1>함수</h1>
+	<h2>함수의 종류</h2>
+	<p onclick="func01();">1. 명시적 함수</p>
+	<p onclick="alert(func02);">2. 익명 함수</p>
+	<p onclick="func03();">3. 리터럴 함수</p>
+
+	<h2 onclick="valTest('kh','정보','교육원');">args(arguments)속성</h2>
+	<h2>클로저 (함수 리턴)</h2>
+
+	<label for="am">오전 강의</label>
+	<input type="text" id="am" value="" />
+	<input type="button" value="클릭!" onclick="amEdu();" />
+
+	<hr />
+
+	<label for="pm">오후 강의</label>
+	<input type="text" id="pm" value="" />
+	<input type="button" value="클릭!" onclick="pmEdu(pm.value);" />			<!--pm.value는 바로 윗줄의 value를 뜻하게 된다. -->
+
+
+
+
+
+</body>
+</html>

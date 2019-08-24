@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>윈도우 연습01</title>
+
+<style type="text/css">
+	#regist {
+		border: 1px solid black;
+		background: pink;
+		position: absolute;
+		top: 200px;
+		left: 500px;
+		display: none;
+	}
+</style>
+
+<!-- 
+	무언가를 안보이게 하는 방법
+	display : none;			// 공간을 차지하지 않는다.(만들어지지 않은 상태)
+	visibility : hidden;	// 공간을 차지한다. (만들어진 상태, 보이지만 않음)
+ -->
+
+<script type="text/javascript">
+	function openWin() {
+		var url = "js15_window02.html";
+		var title = "myframe";
+		var prop = "top=200px,left=600px,width=500px,height=500px";	// property에는 여러가지 속성을 넣을 수 있는데 브라우저마다 되는 속성이 있고 안되는 속성이 있다.
+		window.open(url, title, prop);	// 새 창을 열어줌. 여기서는 타겟으로 iframe을 이용해서 같은 화면에 display 된다.
+	// window 생략가능	url, target, 부가옵션(속성)
+	}
+
+	function registForm() {
+		document.getElementById("regist").style.display = "block";
+		document.body.style.background = "gray";	// 얘가 실행되면 body의 background가 gray로 변함
+
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) { //for in 문 (향상된 for문)
+		//	for(var i=0;i<btns.length;i++){
+			btns[i].disabled = "disabled";	// disabled : 비활성화, 실행 시 다른 기능 사용 막아줌
+		}
+	}
+
+	function closeWin() {
+		document.getElementById("regist").style.display = "none";
+		document.body.style.background = "white";
+
+		var btns = document.getElementsByName("btn");
+		for ( var i in btns) {
+			btns[i].disabled = "";
+		}
+	}
+
+	function idchk() {
+		alert("중복체크를 확인하세요");
+	}
+
+	function idCheck() {
+		open("js15_window03.html", "", "width=300px,height=300px");
+		// window. 생략
+	}
+</script>
+
+</head>
+<body>
+
+	<h1>window객체</h1>
+	
+	<pre>	<!-- The <pre> tag defines preformatted text. -->
+	프로퍼티
+	 -document
+	 -history
+	 -location
+	 -navigator
+	 -screen
+	 -frames
+	 -parent
+	 -top
+	 -self
+	메서드
+	 -alert()
+	 -confirm()
+	 -prompt()
+	 -back()
+	 -forward()
+	 -setInterval()
+	 -clearInterval()
+	 -setTimeout()
+	 -open()
+	 -close()
+	 -scroll(),scrollBy(), scrollTo() 
+	</pre>
+
+	<div id="f1">
+		<h1>팝업창 만들기</h1>
+		<button onclick="openWin()" name="btn">창열기</button>
+		<hr>
+		<h1>회원가입하기(div팝업창)</h1>
+		<button onclick="registForm()" name="btn">회원가입</button>
+	</div>
+
+	<!-- 회원가입폼 시작 -->
+	<div id="regist">
+		<form>
+			<table>
+				<caption>회원가입</caption>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="id" onclick="idchk()" readonly="readonly" /> 
+					<input type="button" value="중복체크" onclick="idCheck()" /></td>
+				</tr>
+				<tr>
+					<td>패스워드</td>
+					<td><input type="password" name="pwd" alt="" style="color: red;" checked="checked" /></td>
+													<!-- alt="" 아무의미 x		 checkbox에서 값이 check상태로 나오고 싶을 때 사용 -->
+				</tr>
+				<tr>
+					<td colspan="2" align="center">	<!-- colspan 셀 병합 -->
+						<input type="button" value="확인" onclick="closeWin()" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 회원가입폼 종료 -->
+
+	<br/><br/><br/>
+	<iframe name="myframe"></iframe>
+	<!-- 내부 프레임(inline frame)이라는 의미로 하나의 HTML문서내에서 다른 HTML문서를 보여주고자 할때 사용합니다. -->
+
+</body>
+</html>

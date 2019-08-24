@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js06</title>
+
+    <script type="text/javascript">
+        function searchId(){
+            var doc = document.getElementById("test");      //id는 유일한 하나만 불러오기 때문에 element다(s없음)
+            doc.innerHTML="id로 탐색합니다.";
+            doc.style.color="red";
+            alert(doc+":"+typeof(doc));
+            
+        }
+
+        function searchName(){
+        	/* 갯수와 상관 없이 nodeList(배열)로 됨 */
+            var doc = document.getElementsByName("test02");     //Elements 's'가 붙었다.
+            doc[1].value="name 속성으로 탐색";
+            alert(doc+":"+typeof(doc));
+        }
+        
+        function searchTagName(){
+        	
+        	var doc = document.getElementsByTagName("p");
+        	doc[3].innerHTML = "tagName으로 탐색 합니다.";
+        	doc[3].style.color = "blue";
+        }
+        
+        function searchQS(){
+        	var doc = document.querySelectorAll("#test");			//쿼리 셀렉트 올이므로 id가 하나더라도 nodeList로 리턴
+        	doc[0].innerHTML = "querySelectorAll(css표현식)";		
+        }
+    
+    
+    </script>
+
+    
+    
+    
+
+
+</head>
+<body>
+
+    <p onclick = "searchQS();">DOM 탐색 메서드</p>
+
+    <p id = "test" onclick="searchId();">1.엘리먼트의 id로 탐색 : 엘리먼트 하나를 선택(중복 불가)
+        - 반환 : 값 하나
+    </p>
+
+    <p onclick = "searchName();">2.엘리먼트의 name으로 탐색 : 엘리먼트 여러개를 선택
+        - 반환 : 배열(nodeList) <br>
+        <input type="text" name="test02" value="" size="100%"/><br>
+        <input type="text" name="test02" value="" size="100%"/><br>
+        <input type="text" name="test02" value="" size="100%"/><br>
+    </p>
+
+    <p onclick = "searchTagName();">3.엘리먼트의 태그 이름으로 탐색 : 엘리먼트 여러개를 선택
+        - 반환 : 배열(nodeList)
+    </p>
+
+<!-- 
+
+
+    html
+    head
+        
+    body
+        p 4개 뭐뭐뭐뭐 있음
+        3번째 p안에 input 3개
+
+
+
+        이게 지금 위의 문서(document)
+
+        DOM이란 Document Object Model
+
+        이 때 2번째 p태그를 가지고 오고싶다. 어떻게 할거냐
+-->
+    
+</body>
+</html>
+
+
+

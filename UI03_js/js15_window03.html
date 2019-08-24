@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>중복체크</title>
+
+<script type="text/javascript">
+	var ids=["khacademy","java","script"];
+	// 화면 값을 데이터베이스에 넣는법을 안배웠기 때문에 임의로 넣어줬다. 
+	// 이 값들을 id로 입력하면 중복기 되고 다른 id를 중복값으로 넣고 싶다면 ids 배열에 추가해주자 !!
+	
+	function confirmChk(){
+		var id=document.getElementsByName("id")[0].value;
+		var div=document.getElementsByTagName("div")[0];
+		if(ids.indexOf(id)!=-1){	// -1은 값이 존재하지 않을경우의 인덱스반환 값
+			div.innerHTML="<b>아이디가 존재합니다.</b>";
+		}else{
+			var userId="사용할 수 있는 아이디입니다."
+			          +"<input type='button' value='확인'"
+			          +"onclick='insertId(\""+id+"\")'>";
+			          // ★★★  변수가아닌 id의 값을 주고 싶다 !! ★★★
+			          // ""를 안넣어주면 값이아닌 변수명으로 들어가진다.
+			          // ""가 그냥 들어가면 안되므로 escape문자인 역슬래시(\)를 넣어준다.
+			          
+			div.innerHTML=userId;          
+			
+		}
+	}
+	
+	function insertId(id){
+		opener.document.getElementsByName("id")[0].value=id;
+		opener.document.getElementsByName("pwd")[0].focus();
+		close();
+	}
+</script>
+
+</head>
+<body>
+
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" name="id"/></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="중복확인" onclick="confirmChk()"/>
+				<input type="button" value="취소" onclick="self.close()"/>
+			</td>
+		</tr>
+	</table>
+	<div></div>
+
+</body>
+</html>

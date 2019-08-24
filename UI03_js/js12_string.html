@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js12</title>
+
+<script type="text/javascript">
+
+	function strTest01(){
+		var str01 = "String";
+		var str02 = "Test";
+		
+		// + 연산자
+		var str03 = str01+str02;
+		alert(str03);
+		
+		// concat()
+		var newString = str01.concat(str02, "Java", "Script");
+		alert(newString);
+		
+		// join() : 배열 요소 사이에 삽입하여 문자열로 반환
+		var joinTest = ["5", "10", "15", "20"].join("+");
+		alert(eval(joinTest));	// alert(joinTest); => 5+10+15+20
+								// alert(eval(joinTest)); => 50
+	}
+	
+	function strTest02(){
+		var numVal = 12.5;
+		var boolVal = true;
+		var result = "String"+numVal+boolVal;
+		alert(result + ": "+ typeof result);
+		
+	}
+	
+	function strTest03(){
+		var span = document.getElementById("res");
+		var str = prompt("이름을 입력하세요 : ");
+		
+		// == : 동등 연산자
+		if(str == "kh"){
+			span.textContent = str+"님 환영합니다.";
+		} else if(str == "kh정보교육원"){
+			span.textContent = str+"님 환영합니다.";
+		} else{
+			span.textContent = "이름을 확인해 주세요.";
+		}
+		
+		// 동등연산자를 사용해서 비교하는 경우, 자동 형 변환;
+		var numVal = 10;
+		if(numVal == "10"){	// numVal이 문자 "10"과 같다면?
+			alert("== : 숫자 10이 맞습니다.");	// 맞습니다
+		} else{
+			alert("== : 숫자 10이 아닙니다.");
+		}
+		
+		// === : 엄격한 비교
+		if(numVal ==="10"){
+			alert("=== : 숫자 10이 맞습니다.");
+		}else{
+			alert("=== : 숫자 10이 아닙니다.");	// 아닙니다
+		}
+		
+		// 객체 비교
+		var strObj = new String("kh");
+		var strVal = "kh";
+		
+		alert(typeof(strObj) + "/" + typeof(strVal));
+		//	object						string
+		
+		if(strObj == strVal){
+			alert("== : 문자가 같다.");	// 같다
+		}else{
+			alert("== : 문자가 다르다.");
+		}
+		
+		if(strObj === strVal){
+			alert("=== : 문자가 같다.");	
+		}else{
+			alert("=== : 문자가 다르다.");	// 다르다
+		}
+		
+	}
+	
+	function strTest04(){
+		// indexOf() : 왼쪽 -> 오른쪽 검색 (값의 첫번째 인덱스를 반환)
+		// lastIndexOf() : 오른쪽 -> 왼쪽 검색 (값의 첫번째 인덱스를 반환)
+		// 만약 검색하는 값이 존재하지 않으면 -1을 반환
+		
+		var str = "홍길동 이순신 김선달 유재석 홍길동 강호동";
+		var prop = prompt("검색할 이름을 입력해 주세요 : ");
+		alert("indexOf : " + str.indexOf(prop));	// 홍길동 검색 시 : 0
+		alert("lastIndexOf : " + str.lastIndexOf(prop)); // 홍길동 섬색 시 : 16
+		
+		
+		
+	}
+	
+	function strTest05(){
+		// substring() : 시작 인덱스부터 끝 인덱스까지 잘라온다. -> String
+		// split() : 기준이 되는 요소로 잘라온다. -> [], String 배열
+		
+		var str = "문자열 추출하기. 관련 메소드 : indexOf, substring, split.";
+		var sIdx = str.indexOf(":");
+		var eIdx = str.lastIndexOf(".");
+		var res = str.substring(sIdx+1, eIdx);
+		alert(res);
+		
+		var splitVal = res.split(",");	// indexOf, substring, split 따로따로 출력
+		alert(splitVal[1]);	// substring
+		
+	}
+	
+	function strTest06(){
+		
+		var prop = prompt("쉼표로 구분하여 키워드를 입력하세요", "예)사과, 바나나, 키위, 수박");
+		var propArr = prop.split(",");
+		var res = "";
+		
+		for(var i=0; i<propArr.length; i++){
+			res += "키워드 : "+propArr[i]+"<br/>";
+		}
+		
+		document.getElementById("key").innerHTML = res;
+		
+	}
+
+</script>
+
+
+
+</head>
+<body>
+
+	<p>문자열 합치기
+		<button onclick="strTest01();">클릭</button>
+	</p>
+	
+	<p>다른 자료형 합치기
+		<button onclick="strTest02();">클릭</button>
+	</p>
+	
+	<p>문자열 비교하기
+		<button onclick="strTest03();">클릭</button>
+		<span id="res"></span>
+	</p>
+	
+	<p>문자열 검색하기
+		<button onclick="strTest04();">클릭</button>
+	</p>
+	
+	<p>문자열 추출하기
+		<button onclick="strTest05();">클릭</button>
+	</p>
+	
+	<p>키워드 나누기
+		<button onclick="strTest06();">클릭</button>	
+		<div id="key"></div>
+	</p>
+	
+	
+	
+</body>
+</html>

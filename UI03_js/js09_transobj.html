@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js09</title>
+</head>
+<body>
+
+	<h1>1. 숫자형 형 변환 number()</h1>
+	<p>문자형의 정수, 실수 -> 숫자형으로 반환</p>
+	<input type="text" id="num"/>
+	<button onclick="numTest(num.value);">확인</button>
+	
+<script type="text/javascript">
+	function numTest(val){
+		var vals = Number(val)+5;
+		alert(vals);
+			
+	}
+</script>
+
+	<h1>2. 정수형 형 변환 parseInt()</h1>
+	<p>문자형의 정수형태 -> 숫자형</p>
+	<input type="text" id="int"/>
+	<button onclick="intTest(int.value)">확인</button>
+	
+<script type="text/javascript">
+	
+	function intTest(val){
+		var vals = parseInt(val)+10;
+		alert(vals);
+		
+		
+	}
+	
+</script>
+
+	<h1>3. 실수형 형 변환 parseFloat()</h1>
+	<p>문자형의 실수형태 -> 숫자형으로</p>
+	<input type="text" id="float"/>
+	<button onclick="floatTest(float.value)">확인</button>
+
+<script type="text/javascript">
+
+	function floatTest(val){
+		var vals = parseFloat(val)+5.5;
+		alert(vals);
+	}
+	
+</script>
+
+	<h1>4. 검증함수</h1>
+	<p>문자열로 된 코드를 자바스크립트로 읽어들인다.</p>
+	<input type="text" name="evalue" placeholder="예) 5+10"/>
+	<button onclick="evalTest()">확인</button>
+	<span></span>
+	
+<script type="text/javascript">
+
+	function evalTest(){
+		var vals = document.getElementsByName("evalue")[0];	// name이 evalue인 input Tag가 들어감.
+		
+		if(confirm("작성하신 코드가 맞습니까 : " + vals.value)){
+			document.getElementsByTagName("span")[0].innerHTML = "<b>계산 결과 : " + eval(vals.value) + "</b>";
+		}else{
+			vals.value = "다시 작성해 주세요. 예) 5+10";
+		}
+	}
+	
+</script>
+	
+	<hr/>
+	
+	<input type="number" class="a"/>
+	<input type="text" list="calllist" class="a" />
+		<datalist id="calllist">
+			<option value="+"/>
+			<option value="-"/>
+			<option value="*"/>
+			<option value="/"/>			
+		</datalist>
+	<input type="number"placeholder="숫자" class="a"/>
+	<button onclick="calcTest();">확인</button>
+	<span></span>
+	
+<script type="text/javascript">
+
+	function calcTest(){
+		var doc = document.querySelectorAll(".a");	// css선택자를 통해서 객체들을 가져온다.		class가 test인 얘들 (input Tag)
+		var res = "";		// SelectorAll은 node형식으로 가져온다. doc의 타입은 nodelist가 된다. 
+							// nodelist는 실제적으로 배열객체 	
+		
+		for(var i=0; i<doc.length; i++){	// 여기서 i는 해당 node의 타입. 	inputTag 3개의 타입, number, text(기호), number를 객체(object)로 가져오고 싶다 !! 
+			res +=doc[i].value;			// 							===> JavaScrpit가 가져와줌 !!
+			// +=가 담는 것
+		}
+		
+		document.getElementsByTagName("span")[1].innerHTML="결과 : " + eval(res);	// eval : 문자열로 되어있는 수식을 실제로 계산해주는 함수.
+	}	// document.getElementsByTagName("span")까지는 nodelist타입이 반환 !!	이유 : Tag가 몇개일지 모르기 때문에 배열로 담아주는 것!!
+		// -> 배열에 있는 [1] 번지 !! 앞에 만든 <span>이 0번지, 이번에 만든 <span>이 1번지 !!
+
+</script>
+
+</body>
+</html>
+
+
+
+

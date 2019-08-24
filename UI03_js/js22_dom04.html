@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js22</title>
+
+<style type="text/css">
+
+	img{
+		vertical-align: middle;
+		width: 300px;
+		height: 300px;	
+	}
+	a{
+		font-size: 30px;
+		text-decoration: none;
+	}
+
+</style>
+
+<script type="text/javascript">
+
+	onload=function(){
+		var anchs = document.querySelectorAll("a");
+		var img = document.querySelector("img");
+		var count=1;
+		
+		// 왼쪽
+		anchs[0].onclick=function(){
+			var imgAlt = img.getAttribute("alt");
+			if(imgAlt == "img01"){
+				count = 6;
+				img.setAttribute("alt", "img06");
+				img.setAttribute("src", "image/006.png");
+			} else {
+				img.setAttribute("alt", "img0"+(--count));
+				img.setAttribute("src", "image/00"+count+".png");
+			}
+		}
+		
+		// 오른쪽
+		anchs[1].onclick=function(){
+			var imgAlt = img.getAttribute("alt");
+			if(imgAlt == "img06"){
+				count = 1;
+				img.setAttribute("alt", "img01");
+				img.setAttribute("src", "image/001.png");
+			} else {
+				
+				img.setAttribute("alt", "img0"+(++count));
+				img.setAttribute("src", "image/00"+count+".png");
+			}
+			
+		}
+		
+	}
+
+
+</script>
+
+
+</head>
+<body>
+
+	<div>
+		<a href="#" id="lt" >◀</a>
+		<img alt="img01" src="image/001.png"/>
+		<a href="#" id="rt" >▶</a>
+	</div>
+
+
+</body>
+</html>

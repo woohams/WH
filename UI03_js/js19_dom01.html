@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js19</title>
+
+<script type="text/javascript">
+
+	function searchPar(){
+		var child2 = document.getElementsByTagName("p")[1];
+		var div = child2.parentNode;
+		alert(div.nodeName);
+		div.style.backgroundColor="pink";		
+	}
+
+	function searchChi(){
+		var div = document.getElementsByTagName("div");
+		
+		var divChildren=div[0].childNodes;	// Nodes !!
+		
+		alert(divChildren.length);
+		// child3의 배경색을 blue로 변경하자.
+		divChildren[5].style.backgroundColor="blue";
+		
+		
+		
+	}
+	
+	function test01(){
+//		var test02 = document.getElementsByTagName("p")[3];
+//		var div = test02.parentNode;
+//		div.style.backgroundColor="yellow";	
+		
+		var p = document.getElementsByTagName("p")[3];
+		var parentP = p.parentNode;
+		parentP.style.backgroundColor="skyblue";
+		
+	}
+	
+	function test02(){	// 주석 = 내가푼 거 // 주석 없는 것 = 강사님 코드
+//		var div = document.getElementsByTagName("div");		
+//		var divTest=div[2].childNodes;
+//		divTest[3].style.fontSize="20pt";
+
+		var div = document.getElementsByTagName("div")[2];	
+		var divChild = div.childNodes[3];
+		divChild.style.fontSize="20pt";
+	}
+	
+	
+
+</script>
+
+
+</head>
+
+<body>
+
+	<h1>부모 탐색, 자식 탐색</h1>
+	
+	<div>
+		<p>child1</p>
+		<p>child2</p>
+		<p>child3</p>
+	</div>
+	<!-- <div><p>child1</p><p>child2</p><p>child3</p></div> 하면 3개, 위에처럼 하면 7개. p태그들은 각각 1, 3, 5(0과 2와 4와 6이 공백, 화이트 박스?) -->
+	
+	<button onclick="searchPar();">부모 탐색</button>
+	<button onclick="searchChi();">자식 탐색</button>
+	
+	<!--  문제  -->
+	<h3 onclick="test01();">1. test01의 부모태그 div에 배경색을 적용하자.</h3>
+	<h3 onclick="test02();">2.  마지막 div 태그의 자식노드인 test04태그를 찾아서 폰트 크기를 20pt 적용하자.(childNodes로 찾자.)</h3>
+	
+	<div>
+		<p>test01</p>
+		<p>test02</p>
+	</div>
+	
+	<div>
+		<p>test03</p>
+		<p>test04</p>
+	</div>
+
+</body>
+</html>

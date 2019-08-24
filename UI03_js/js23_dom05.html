@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js23</title>
+
+<style type="text/css">
+
+	p{
+		border: 1px solid red;
+	}
+	#test01, #test02{
+		width: 300px;
+		height: 300px;
+		border: 1px solid blue;
+	
+	}
+	
+
+</style>
+
+
+<script type="text/javascript">
+
+	function addAppend(){
+		var p = document.createElement("p");
+		p.textContent="자식 태그들 중 마지막에 붙인다.";
+		
+		var fieldset = document.getElementById("addele");
+		fieldset.appendChild(p);
+		
+	}
+	
+	var count = 1;
+	function addBefore(){
+		var newP = document.createElement("p");
+		var txt = document.createTextNode("엘리먼트의 앞에 붙인다. "+(count++));
+		newP.appendChild(txt);
+		
+		var oldDiv = document.querySelector("fieldset > div");	// fieldset이 갖고있는 div 찾기
+		var fieldset = document.getElementById("addele");
+		
+		fieldset.insertBefore(newP, oldDiv);	// newP를 oldDiv 앞에 붙이자 !!	
+	}
+	
+	function moveElement(){	// 이미 document에 있는 것에 함수를 주면 새로 생기는 것이 아니라 옮겨진다.
+		var moveEle = document.querySelector("fieldset").children[1];	// createElement 했다면 새로 생겼을 것. 이렇게 하면 옮겨진다 !
+		var addEle = document.body;
+		addEle.appendChild(moveEle);	
+	}
+	
+	function addDomTest(){
+		var div = document.createElement("div");
+		div.textContent="dom test";
+		
+		//= document.getElementById("test01").appendChild(div);
+		var fieldset = document.getElementById("test01");
+		fieldset.appendChild(div);
+		
+	}
+	
+	function moveDomTest(){
+		
+		//= var test-1 = document.getElementById("test01").children[0];
+		//= document.getElementById("test02").appendChild(test01);
+		var moveDom = document.getElementById("test01").children[0];
+		var addDom = document.getElementById("test02");
+		addDom.appendChild(moveDom);
+		
+		
+	}
+
+
+</script>
+
+</head>
+<body>
+	
+	<h1>태그 추가하기</h1>
+	
+	<button onclick="addAppend();">appendChild()</button>
+	<button onclick="addBefore();">insertBefore()</button>
+	<button onclick="moveElement();">엘리먼드 이동</button>
+
+	<fieldset id="addele">
+		<legend>부모태그</legend>
+		<div>div태그</div>
+	</fieldset>
+	
+	<hr/>
+	
+	<h3>문제 1. test01 태그에 "dom test"라는 내용을 가진 div 태그를 추가하자.</h3>
+	<button onclick="addDomTest();">추가</button>
+	
+	<h3>문제 2. test02 태그에 추가된 태그들을 test02의 내부로 이동하자.</h3>
+	<button onclick="moveDomTest();">이동</button>
+	<br>
+	*test01
+	<div id="test01"></div>
+	*test02
+	<div id="test02"></div>
+
+</body>
+</html>

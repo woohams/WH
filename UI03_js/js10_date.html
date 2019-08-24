@@ -1,0 +1,141 @@
+<!DOCTYPE css>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js10</title>
+
+<script type="text/javascript">
+
+	onload=function(){	// window.onload=function() : window가 로딩될때 먼저 실행되는 것
+						// window는 생략 가능 !!
+		document.getElementsByTagName("button")[0].onclick=testDate01;	// 0번지의 버튼 태그를 눌렀을 때 어떤 함수를 실행시켜라 !
+		document.getElementsByTagName("button")[1].onclick=testDate02;	// 여기서는 testDate02
+		document.getElementsByTagName("button")[2].onclick=testDate03;	// testDate03 함수를 먼저 만들고 쓰도록 습관 !
+		document.getElementsByTagName("button")[3].onclick=testDate04;
+		document.getElementsByTagName("button")[4].onclick=testDate05;
+	}		
+
+	function testDate01(){
+	
+		var inputDate = document.getElementById("today");
+		
+		// 오늘 날짜 객체 생성
+		var date = new Date();	// dateclass, 현재 날짜
+		
+		inputDate.innerHTML = date.toDateString()+"<br/>";
+		inputDate.innerHTML += date.toLocaleDateString()+"<br/>";
+		inputDate.innerHTML += date.toLocaleString()+"<br/>";
+		inputDate.innerHTML += date.toLocaleTimeString()+"<br/>"
+		
+	}
+	
+	function testDate02(){
+		
+		var dayOfWeek = ["일", "월", "화", "수", "목", "금", "토"];	// 얘를 전역변수 처리시켜주면 funtion3에 따로 선언 안시켜줘도 된다.
+		var inputDate = document.getElementById("today");	// 추가시켜주는게 맞나?
+		
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		var day = date.getDate();
+		var week = date.getDay();
+		
+		document.getElementById("today").innerHTML = year + "-" + month + "-" + day + " " + dayOfWeek[week];
+		
+	}
+	
+	function testDate03(){
+		
+		var dayOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+		
+		var year = 2019;
+		var month = 4;
+		var day = 4;
+		var date = new Date(year, month-1, day);
+		
+		var year1 = date.getFullYear();
+		var month1 = date.getMonth()+1;
+		var day1 = date.getDate();
+		var week1 = date.getDay();
+		
+		document.getElementById("specific").innerHTML = date;		
+		document.getElementById("specific").innerHTML += 
+			year1 + "-" + month1 + "-" + day1 + " " + dayOfWeek[week1];
+	}
+	
+	function testDate04(){
+		
+		var dates = document.getElementById("dates").value;		// value 값은 날짜가 됨 (실행 시 고른, 입력한 날짜)
+		var inputDate = document.getElementById("inputdate").value;
+		
+		var date = new Date(dates);
+		date.setDate(date.getDate() + parseInt(inputDate));	// 가져온 날자에 입력한 날짜 수를 더해서 set해준다 .
+		
+		document.getElementById("result").value = date.toLocaleDateString();
+		
+		
+	}
+	
+	function testDate05(){
+		// getTime() -> milliseconds로 해당 날짜 반환!!
+		
+		var startdate = document.getElementById("startdate").value;
+		var finishdate = document.getElementById("finishdate").value;
+		
+		var nowDate = new Date(startdate);
+		var afterDate = new Date(finishdate);
+		
+		//console.log(); : F12 Console창에 현제 진행상황 보여줌
+		console.log(nowDate);
+		console.log(afterDate);
+
+		var resultVal = (afterDate.getTime()-nowDate.getTime()) / (1000*60*60*24);	// 밀리초 단위라서 !!
+
+		document.getElementById("resultdate").value = resultVal;
+
+	}
+
+
+</script>
+
+</head>
+<body>
+<!-- script문은 어디다 써도 상관 없지만 모아서 써줘야 유지보수에 큰 어려움이 없다 !! -->
+	<h1>오늘 날짜 출력하기</h1>
+	<span id="today"></span><br/>
+	<button>오늘 날짜</button>
+	<button>오늘 날짜(다른 표현)</button>
+	
+	<hr/>
+
+	<h1>특정 날짜 출력하기</h1>
+	<span id="specific"></span>
+	<br/>
+	<button>특정 날짜</button>
+	
+	<h1>경과 날짜 구하기</h1>
+	<label>지정 날짜</label>
+		<input type="date" id="dates" size="50"/><br/>
+	<label>경과 일</label>
+		<input type="number" id="inputdate"><br/>
+	<label>경과 후 날짜</label>
+		<input type="text" id="result" readonly="readonly"/><br/>
+	<button>경과 날짜</button>
+	
+	<hr>
+	
+	<h1>D-Day</h1>
+	<label>시작 날짜</label>
+		<input type="date" id="startdate" size="50"/>
+	<br/>
+	<label>종료 날짜</label>
+		<input type="date" id="finishdate" size="50"/>
+	<br/>
+	<label>남은 일수</label>
+		<input type="text" id ="resultdate" readonly="readonly"/>
+	<button>남은 일수 구하기</button>
+	
+</body>
+</html>
+
+

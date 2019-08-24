@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js01</title>
+
+<script type="text/javascript" src="js/test.js">	/* src로 연결 했을 땐 앤드 스크립트 사이에 뭐 안쓴다. */
+</script>
+
+<script type="text/javascript">		/* css쓸 때 style처럼 script라고 해두면 됨. */
+
+	function embeddedTest(){
+		var doc = document.getElementsByTagName("li")[1];
+		doc.style.color="red";
+		doc.innerHTML="<strong>글자가 바뀝니다.</strong>";
+		
+	}
+
+</script>
+
+</head>
+<body>
+	
+	<h1>자바스크립트 작성방식 3가지</h1>
+	
+	<ol>
+		<li onclick="alert('inline')">inline 방식</li>	
+		<!-- onclick이라는 이벤트 걸어주고 = " 이 안은 자바스크립트 코드가 들어가는 영역이다" -->
+		<!-- 쌍따옴표 안에 또 쌍따옴표를 쓰면 "alert(" 여기까지만 자바스크립트가 되고 그 뒤는 그냥 이상한 문자가 되어버리는 것. -->
+		<!-- alert이라는 명령어는 ''싱글 쿼테이션 안에 있는 문자를 경고창으로 띄워라이다 -->
+		
+		<li onclick="embeddedTest()">내부 작성 방식(embedded)</li>	<!-- 내부 작성 방식이라는 글자를 클릭했을 때 위에 메소드를 불러오자. -->
+		
+		<li onclick="test();">외부 링크 방식(*.js)</li>		<!-- 보통 이 방식을 주로 선호한다 -->
+	</ol>
+	
+</body>
+</html>

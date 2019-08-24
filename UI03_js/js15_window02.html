@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>팝업창</title>
+
+<script type="text/javascript">
+	function test(){
+		var val=document.getElementsByName("test")[0].value;
+		opener.document.getElementsByTagName("h1")[1].innerHTML=val;	// opener는 부모에게 상속받는 개념, window. 생략
+		close();	// window. self. 생략
+	}	//function cloe(){} 만들면 안된다 !!
+</script>
+
+</head>
+<body>
+
+	<input type="text" name="test"/>
+	<input type="button" onclick="test()" value="전달"/>
+	<input type="button" onclick="self.close()" value="창닫기"/>
+
+
+</body>
+</html>

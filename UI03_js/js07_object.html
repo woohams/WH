@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js07</title>
+
+<script type="text/javascript">
+
+	function myClassQ(){
+		
+		//this : 외부에서 접근 가능하게 만들어준다.
+		this.name = "kh 정보 교육원";
+		//var : 외부에서 접근 불가능하게 만든다. 
+		var name02 = "java 프레임 워크 개발자 양성 과정";
+		
+		this.getName02 = function(){
+			return name02;
+		}
+	}
+	
+	
+	
+	var classQ02 = {								//객체 리터럴이라고 한다 : 객체 안에 값이 만들어짐.
+			name : "kh 정보 교육원",
+			print : function(){
+				alert(classQ02.name+"_print");
+				return classQ02.name;
+			}
+	}
+	
+	//prototype
+	myClassQ.prototype.printName = function(){
+		var abc = "메롱";
+		alert(this.name + "," + this.getName02() +"_proto:"+ abc);
+	}
+	
+	function objTest(){
+		
+		var cls = new myClassQ();
+		
+		//alert(cls.name);
+		//alert(cls.name02);				//undefined : 정의되지 않음. null과의 차이는 뭘까?
+		//alert(cls.getName02());			//요렇게 하면 제대로 뜸.
+		
+		cls.printName();					//printName이라는 기능을 확장시켰음
+		
+		//alert(classQ02.name);
+		//classQ02.print();
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+	<pre>
+		객체의 구성
+		-메서드 : 기능 정의
+		-속성 : 객체 내부의 데이터
+		-this : 객체 내부의 메서드나 속성을 정의할 때 사용
+		-프로토타입 : 객체의 확장
+	</pre>
+	
+	<button onclick = "objTest();">객체</button>
+
+</body>
+</html>

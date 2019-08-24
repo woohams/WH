@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js16</title>
+
+<script type="text/javascript">
+
+	function locTest(){
+		
+//		location.href="https://www.naver.com";		// 뒤로가기 시 이전페이지로
+//		location.assign("https://www.naver.com");	// 뒤로가기 시 이전페이지로
+		location.replace("https://www.naver.com");	// 뒤로가기 시 목차로(index) (전 단계 이력이 삭제된다.)
+//		location.reload();							// 페이지 새로고침
+	}
+
+</script>
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+	<a href="https://www.google.com/search?q=kh%EC%A0%95%EB%B3%B4%EA%B5%90%EC%9C%A1%EC%9B%90&oq=kh%EC%A0%95%EB%B3%B4&aqs=chrome.2.69i57j69i61j0j69i61l2j0.4263j0j4&sourceid=chrome&ie=UTF-8">이동</a>
+	
+	<button onclick="locTest()">이동</button>
+
+
+</body>
+</html>
