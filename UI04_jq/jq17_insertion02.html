@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+<style>
+
+    img{width: 150px; height: 150px; float:left;}
+    #menubox{position: relative;} 
+    #menu{overflow: auto;}
+    /* 
+        position
+        relative : css에서만..?
+        absolute : 부모의 것을 상속받는 ..?
+     */
+    .sel{width: 140px; height: 140px; border: 5px dotted red; position: absolute; left: 300px;} 
+    button{width: 150px; height: 50px; margin-left: 300px;}
+
+</style>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    $(function(){
+        setInterval(function(){ // setInterval은 계속 돌아간다. 이 jq에서 stop을하면 이미지는 멈춰보이지만 사실은 계속 돌아가고있다(console.log 하면 알 수 있음) => 때문에 clearInterval해주지 않으면 손해
+            var div=$("#menu"); // id가 menu인 div 태그                 active class의 첫 번째에 div를 추가. 
+            $(".active").first().appendTo(div); // appendTo(target) : Insert every element in the set of matched elements to the end of the target. 
+        //  $(".active").first()요소를 (div)요소안으로 이동시킨다.     (일치하는 요소 집합의 모든 요소를 ​​대상 끝에 삽입합니다.) => 선택한 요소를 다른요소에 넣는 메소드
+        }, 50);
+
+        
+    $("button").click(function(){
+        $("img").toggleClass("active");
+
+        if($("button").text()=="start"){
+            $("button").text("stop");
+        }else{
+            $("button").text("start");
+            alert($("img:eq(2)").attr("alt")+"이(가) 선택되었습니다!!");
+        }
+    });
+});
+    
+
+
+
+</script>
+</head>
+<body>
+
+    <h1>선택해 주세요</h1>
+    <div id="menubox">
+        <div class="sel"></div>
+            <div id="menu">
+                <img alt="그림1" src="image/001.png"/>
+                <img alt="그림2" src="image/002.png"/>
+                <img alt="그림3" src="image/003.png"/>
+                <img alt="그림4" src="image/004.png"/>
+                <img alt="그림5" src="image/005.png"/>
+                <img alt="그림6" src="image/006.png"/>
+            </div>
+        <button>start</button>
+    </div>
+
+</body>
+</html>

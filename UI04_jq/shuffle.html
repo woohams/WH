@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>shuffle</title>
+<style type="text/css">
+	#teacher{font-size: 50px;}
+	div{text-align: center;}
+	p{width:100px; height: 80px; background-color: rgb(83, 233, 83); display:inline-block; text-align: center;
+		font-size: 50px; margin: 30px 0; }
+	span {margin-left: 100px;}
+	b{float: center; position: relative; left: 200px; font-size: 25px;}
+</style>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+	function shuffle() {
+		var  ran, tmp;
+		var nums = [];
+		var fronts =[14,15,16,17,18,1,2,3];
+		for(var i=1; i<29;i++){
+			if(i!=2&&i!=6&&i!=13&&-1==fronts.indexOf(i)){
+				nums.push(i);
+			}	
+		}
+		
+		for(var j = fronts.length-1;j>0;j--){
+			ran = Math.floor(Math.random() * (j+1));
+			tmp = fronts[j];
+			fronts[j] = fronts[ran];
+			fronts[ran] = tmp;
+		}
+		
+
+		for(var j = nums.length-1;j>0;j--){
+			ran = Math.floor(Math.random() * (j+1));
+			tmp = nums[j];
+			nums[j] = nums[ran];
+			nums[ran] = tmp;
+		}
+		
+		for(var j = 0; j<nums.length;j++){
+			fronts.push(nums[j]);
+		}
+		
+ 		var cnt = 0;
+		$("div>p").each(function(i){
+			if(i==5||i==12||i==17||i==24||i==29){
+				$(this).text(0);
+			}else{
+				$(this).text(fronts[cnt]);
+				cnt++;
+			}
+		});
+	};
+	
+	$(function(){
+		$("html").click(function() {
+			shuffle();
+		});
+	});
+	
+</script>
+</head>
+<body>
+	<div>
+		<div><h2>SCREEN</h2><b id="teacher">강사님</b></div><br>
+		<p></p><p></p><p></p><span></span><p></p><p></p><p></p><br>
+		<p></p><p></p><p></p><span></span><p></p><p></p><p></p><br>
+		<p></p><p></p><p></p><span></span><p></p><p></p><p></p><br>
+		<p></p><p></p><p></p><span></span><p></p><p></p><p></p><br>
+		<p></p><p></p><p></p><span></span><p></p><p></p><p></p><br>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+
+<style>
+    img{width:200px; height: 200px;}
+    .addSize{width: 300px; height: 300px;}
+    .onOff{display: none;}
+</style>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    $(function(){
+        $("img").click(function(){
+            if($(this).hasClass("addSize")){
+                $(this).removeClass("addSize").attr("title","이미지 축소");
+            } else {
+                $(this).addClass("addSize").attr("title","이미지 확대");
+            }
+            $("#btn").click(function(){
+                $("img").toggleClass("onOff");
+                
+            });
+        });
+        
+    });
+
+
+</script>
+
+</head>
+<body>
+    <button id="btn">이미지 on/off</button>
+    <br/>
+    <img alt="img01" src="image/001.png" title="이미지 1">
+    <img alt="img02" src="image/002.png" title="이미지 2">
+    <img alt="img03" src="image/003.png" title="이미지 3">
+    
+</body>
+</html>

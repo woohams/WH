@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+	<!--
+	  ,ad8888ba,   88888888ba         ,ad8888ba,    ,ad8888ba,		
+	 d8"'    `"8b  88      "8b       d8"'    `"8b  d8"'    `"8b		
+	d8'        `8b 88      ,8P      d8'           d8'				
+	88          88 88aaaaaa8P'      88            88				
+	88          88 88""""""'        88      88888 88      88888		
+	Y8,        ,8P 88               Y8,        88 Y8,        88		
+	 Y8a.    .a8P  88                Y8a.    .a88  Y8a.    .a88
+	  `"Y8888Y"'   88     	LOL	      `"Y88888P"    `"Y88888P"		
+
+		 리버풀 챔스우승!!	 OP.GG 만들기 매우 힘드러용 ㅠㅠ
+-->
+<head>
+<meta charset="UTF-8">
+<title>롤 전적 검색 OP.GG - 전적 검색, 관전, 리플레이, 챔피언 공략, 카운터, 랭킹</title>
+<style type="text/css">
+
+*{
+	margin : 0px;
+	padding : 0px;
+}
+body {
+	background-color: rgba(50, 116, 230);
+}
+.container{
+	width: 1080px;
+    margin: 0 auto;
+}
+.index_logo{
+	padding-bottom: 24px;
+	padding-top: 32px;
+	display: block;
+	text-size-adjust: 100%;
+	width: 100%;
+}
+
+#op.gg logo {
+	display: block;
+	padding:32px 0 24px;
+	width: 320px;
+	height: 200px;
+
+}
+#op.gg logoImg{
+	display:block;
+	max-width:360px;
+	max-height:320px;
+	margin:0 auto;
+}
+
+.opgg-header_gnb{
+	width : 100%;
+	height : 120px;
+}
+.opgg-header_navi {
+	
+	display : flex;
+}
+
+.opgg-header_navi-bt{
+	position : relative;
+	padding-top: 10px;
+	float: left;
+	width: 150px;
+	height: 30px;
+
+}
+.opgg-header_navi-bt a{
+	position : absolute; top : 10px;
+	
+}
+opgg-header_gnb{
+	flex-basis : 300px;
+}
+#opgglogo{
+	text-align: left;
+}
+.opgg-header_logo2{
+	width : 100%;
+	height : 40px;
+	color:rgba(255,255,255,0.8);
+	background-color: rgb(20, 20, 63);
+	font-size : 13px;	
+}
+.opgg-header_logo2div{
+	margin-left : 10px;
+}
+.opgg-header_logo2div :hover :not(img) {
+	background-color:rgba(255,255,255,0.2);
+	cursor: pointer;
+} 
+
+.opgg-header_navi-bt span {
+	position: relative;
+	background-color: initial;
+	top: -10px;
+}
+.opgg-header_logo{
+	width : 100px;
+	text-align : center;
+	margin-top : 10px;
+}
+.layer-dim{
+	float: right;
+	padding-top: 10px;
+	width: 60px;
+
+}
+#icon-zigu{
+	width: 32px;
+	
+}
+.layer-dim2{
+	float: right;
+	padding-top: 5px;
+	width: 40px;
+}
+#login-div{
+	background-color: #5383E8;
+	width: 70px;
+	height: 25px;
+	text-align: center;
+	position: relative;
+	top: -3px;
+	border-radius: 5px 5px 5px 5px;
+}
+.opgg-header_logo3{
+	height: 40px;
+	display: flex;
+}
+.menu_item{
+	display: flex;
+	flex-basis: 200px;
+	margin: 0 auto;
+	text-align: center;
+	color: rgba(255,255,255,0.6);
+	padding-top: 10px;
+	cursor: pointer;
+	
+}
+.menu{
+	display: flex;
+	list-style: none;
+	width: 100%;
+	padding-left: 10%;
+	
+}
+#menu_item_loltochess{
+	flex-basis: 1000px;
+}
+#menu_item_beta{
+	background: #FF8200;
+    color: #FFF;
+    margin-left: 4px;
+    padding: 2px 5px 3px 4px;
+    font-size: 11px;
+    line-height: normal;
+    letter-spacing: normal;
+    font-family: Tahoma;
+    border-radius: 4px;
+}
+.opgg-header_logo4{
+	height: 40px;
+	display: flex;
+	background-color: rgb(26, 26, 105);
+	font-size: 14px;
+	width:1800px;
+	margin: 0 auto;
+}
+#logo4_font{
+	cursor: pointer;
+	color: rgba(255,255,255,0.9);
+	padding-top: 10px;
+	padding-left: 18px;
+}
+.summoner-search_block{
+	width: 100%;
+	padding: 15px 120px 18px 17px;
+	width: 800px;
+}
+button{
+	text-align: center;
+}
+#button_KR{
+	position: relative;
+    padding: 1px 7px 2px 8px;
+    font-size: 11px;
+    color: #fff;
+	background-color: gray;
+}
+
+#button▼{
+	background-color: rgba(255,255,255,1);
+	width:7px;
+	height:7px;
+}
+#span▼{
+	color: gray;
+}
+#buttonGG{
+	height: 30px;
+	width: 50px;
+	background-color: #5383E8;
+
+}
+#spanGG{
+	font-size: 18px;
+	color: white;
+	font: italic;
+
+}
+.adimg{
+	padding-top: 15px;
+}
+.community-best{
+	padding-top: 15px;
+}
+.community-best_left{
+	padding-left: 20px;
+}
+.community-best_right{
+	padding-left: 550px;
+	padding-top: -400px;
+}
+.community-best {
+    width: 1048px;
+    margin-top: 30px;
+    min-height: 396px;
+    background: #fff;
+    border: solid 1px #e9eff4;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<header class="gnb">
+			<div class="opgg-header">
+				<div class="opgg-header_gnb">
+					<div class="opgg-header_navi">
+						<div class="opgg-header_logo">
+								<a class="opgg-header_logo-anchor" href="/">
+									<img id="opgglogo"
+									src="https://opgg-static.akamaized.net/images/gnb/svg/00-opgglogo.svg"
+									alt="OP.GG" width="60" height="15" />
+								</a>
+						</div>
+						<div class="opgg-header_logo2">
+							<div class ="opgg-header_logo2div">
+								<div style="padding-right: 20px;">
+								<div class="opgg-header_navi-bt" >
+									
+									<img
+										src="image/icon-navi-lol.png"
+										alt="리그 오브 레전드" width="24" height="24" />
+									<span>
+									 League of Legends
+									</span>
+								</div>
+								<div class="layer-dim">
+									<div id="login-div">
+										<div>
+											<span style="vertical-align: middle">
+												로그인
+											</span>
+										</div>
+									</div>
+								</div>
+								
+								<div class="layer-dim">
+									<div>
+										<span>
+											한국어
+										</span>
+									</div>	
+								</div>
+								<div class="layer-dim2">
+										<a> 
+											<img id="icon-zigu" src="image/icon-zigu.png"/>
+										</a>
+								</div>
+								</div>
+							</div>
+							
+							<div class="opgg-header_navi-box" style="display: block;">
+
+
+								
+							<div class="opgg-header_navi-noti"></div>
+							</div>
+						</div>
+					</div>
+					<div class="opgg-header_logo3">
+						<ul class="menu">
+							<li class="menu_item">
+								<a>홈</a>
+							</li>
+							<li class="menu_item">
+								<a>챔피언 분석</a>
+							</li>
+							<li class="menu_item">
+								<a>통계</a>
+							</li>
+							<li class="menu_item">
+								<a>랭킹</a>
+							</li>
+							<li class="menu_item">
+								<a>프로관전</a>
+							</li>
+							<li class="menu_item">
+								<a>커뮤니티</a>
+							</li>
+							<li class="menu_item" id="menu_item_loltochess">
+								<a>전략적 팀전투(롤토체스)
+									<span id="menu_item_beta">BETA</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="opgg-header_logo4">
+						<a id="logo4_font">발빠른 OP.GG가 전략적 팀 전투 서비스를 곧 선보입니다! [시너지 시뮬레이터 미리보기]</a>
+					</div>
+				</div>
+
+
+
+			</div>
+
+		</header>
+
+
+
+	<div class="container">
+		<div class="index_logo">
+			<div id="op.gg logo">
+				<img
+					src="https://attach.s.op.gg/logo/20190531130651.915ccbff90860e121b413e97c3feb372.png"
+					title="아무무, 슬픈미라" alt="op.gg Logo" id="op.gg logoImg" width="360px;" height="200px;" justify-content="center";/>
+			</div>
+		</div>
+		<form class="summoner-search">
+			<input type="text" name="userName" class="summoner-search_block" placeholder="소환사명, 소환사명, ...."/>
+			<button id="button_KR">
+				<span>KR</span>
+			</button>
+			<button id="button▼">
+				<span id="span▼">▼</span>
+			</button>
+			<button type="submint" id="buttonGG">
+				<span id="spanGG">.GG</span>
+			</button>
+			
+		</form>
+		<div class="adimg">
+			<a>
+				<img src="https://tpc.googlesyndication.com/simgad/9035906423108497723?sqp=4sqPyQQ7QjkqNxABHQAAtEIgASgBMAk4A0DwkwlYAWBfcAKAAQGIAQGdAQAAgD-oAQGwAYCt4gS4AV_FAS2ynT4&rs=AOga4qmVIlZcYCs4ChBf-iCE3AA48l1KfA"
+				href="https://www.kr.playblackdesert.com/intro/Shai_Update?ADCampaign=Shai_pre&ADSource=google&ADTrackerName=GDN_PC_Re_LAL&ADMedium=GDN_PC_Re_LAL&ADContent=KR&gclid=EAIaIQobChMIsvqRiP_q4gIVC72WCh32vwABEAEYASAAEgInm_D_BwE#utm_campaign=Shai_pre&utm_source=google&utm_term=GDN_PC_Re_LAL&utm_medium=GDN_PC_Re_LAL&utm_content=KR"/>
+			</a>
+		</div>
+		<div class="community-best">
+			<div>
+				<a id="community-best_title">OP.GG Talk 인기글</a>
+			</div>
+			<div class="community-best_left">
+				<ul class="community-list">
+					<li class="community-list_item">
+						<a href="/"></a>
+					</li>
+					<li class="community-list_item">
+						<a href="/"></a>
+					</li>
+					<li class="community-list_item">
+						<a href="/"></a>
+					</li>
+					<li class="community-list_item">
+						<a href="/"></a>
+					</li>
+					<li class="community-list_item">
+						<a href="/"></a>
+					</li>
+					<li class="community-list_item">
+						<a href="/"></a>
+					</li>
+				</ul>
+			</div>
+			<div class="community-best_right">
+					<ul class="community-list">
+						<li class="community-list_item">
+							<a href="/"></a>
+						</li>
+						<li class="community-list_item">
+							<a href="/"></a>
+						</li>
+						<li class="community-list_item">
+							<a href="/"></a>
+						</li>
+						<li class="community-list_item">
+							<a href="/"></a>
+						</li>
+						<li class="community-list_item">
+							<a href="/"></a>
+						</li>
+						<li class="community-list_item">
+							<a href="/"></a>
+						</li>
+					</ul>
+				</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="footer">	
+		<span><b>About OP.GG</b></span><span>로고 히스토리</span><span><b>개인정보처리방침</b></span>
+		<span>도움말</span><span>제휴</span><span>문의/피드백</span><span>채용</span>
+	</div>
+
+
+
+</body>
+</html>

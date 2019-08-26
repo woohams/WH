@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+
+<style>
+    *{margin: 0px; padding: 0px;}
+    table{width: 400px;}
+    table tr:nth-child(odd){background: orange;}
+    fieldset{width: 400px;}
+    body{width: 1000px; margin: 50px auto;}
+
+</style>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    $(function(){
+        $("#emp_search").click(function(){
+            var empid = $("input[name=empid]").val();
+
+            if(!isNaN(empid) && empid.length >2){   // 해당 숫자가 3자리수 이상이라면
+                $.ajax({
+                    url:"emplist.xml",              // 전송할 경로
+                    method:"get",                   // 전송 방식 (get : request의 head로 / post: body에 담겨서)
+                    async:true,                     // 비동기(default : 비동기식) or 동기식
+                    dataType:"xml",                 // 전송 받을 데이터의 타입(xml, json, html. script)
+                    // data: {"key", "value"}       // 서버에 전송할 데이터
+                    success: function(msg){         // 통신에 성공했을 때 
+                    // object XMLDocument
+                    //  alert(msg); 
+                       
+                        var empInfo = $(msg).find("EMPLOYEE_ID:contains("+empid+")").parent(); //EMPLOYEE ID의 값을 찾아서 empid와 같다면 그 정보들을 가져오려고
+
+                        if((empInfo).is("ROW")){
+                            $("table input").each(function(i){
+                                $(this).val($(empInfo).children().eq(i).text());
+                            });
+
+                        } else {
+                            alert("검색대상이 존재하지 않습니다.(100~206으로 검색!)");
+                        }
+
+
+                    },
+                    error:function(request, error){ // 통신에 실패했을 때
+                        alert("code:"+request.status+"\n"+"message:"+request.responceText+"\n"+"error:"+error);
+                    }
+                });
+            } else{
+                alert("사원번호를 제대로 입력해 주세요!");
+            }
+
+
+        });
+    });
+
+//  Ajax(Asynchronous JavaScript and XML, 에이잭스) : 비동기식 (동기식은 어떤 명령을 했을 때 그 명령이 수행되는 동안 다른행동 x 비동기는 다른행동 o)
+//  xml, json파일을 받아올 때 사용하는데 다른사람들이 만든 데이터를 사용하고 싶을 때 AJAX가 많이 사용된다 !!!
+</script>
+<body>
+
+    <h1>데이터 가져오기</h1>
+    
+    <fieldset>
+        <legend>사원정보 조회</legend>
+        <input type="text" name="empid">
+        <input type="button" id="emp_search" value="조회"/>
+    </fieldset>
+
+    <table>
+        <tr>
+            <td>사원번호</td>
+            <th><input type="text" name="empNum"></th>
+        </tr>
+        <tr>
+            <td>이  름</td>
+            <th><input type="text" name="lastName"></th>
+        </tr>
+        <tr>
+            <td>이 메 일</td>
+            <th><input type="text" name="email"></th>
+        </tr>
+        <tr>
+            <td>전화번호</td>
+            <th><input type="text" name="phone"></th>
+        </tr>
+        <tr>
+            <td>입 사 일</td>
+            <th><input type="text" name="hire"></th>
+        </tr>
+        <tr>
+            <td></td>
+            <th></th>
+        </tr>
+    </table>
+
+
+</body>
+</html>

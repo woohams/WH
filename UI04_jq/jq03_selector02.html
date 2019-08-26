@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jq03</title>
+
+<style type="text/css">
+
+    img{width: 100px; height: 100px;}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+    function a01(){
+        $("img").css({"width":"200px","height":"200px"});
+    }
+    function a02(){
+        // $("#selid").css("display","none");
+        $("#selid").hide();
+    }
+    function a03(){
+        $(".selclass").css("opacity","0.5");
+    }
+    function a04(){
+        $("img[title*=02]").slideUp(2000);
+    }
+    function a05(){
+        $("td > img").attr("src", "image/003.png");
+    }
+
+</script>
+</head>
+<body>
+
+    <h1>1. 이미지들의 크기를 모두 200px*200px으로 설정하자</h1>
+    <button onclick="a01();">클릭!</button>
+
+    <h1>2. 이미지들 중 id가 'selid'인 태그를 찾아 숨기자</h1>
+    <button onclick="a02();">클릭!</button>
+
+    <h1>3. 이미지들 중 class가 'selclass'인 태그를 찾아 투명도 50% 적용하자</h1>
+    <button onclick="a03();">클릭!</button>
+
+    <h1>4. 이미지들 중 속성값으로 탐색하여 slideUp기능을 적용하자
+        (title 속성값 중, '02'를 포함하는 img 태그를 찾아서 적용)
+        (slideUp은 default:400ms -> 2000ms로 적용)
+    </h1>
+    <button onclick="a04();">클릭!</button>
+
+    <h1>5. 이미지 바꾸기(td의 자식요소만 선택해서 바꾸자)</h1>
+    <button onclick="a05();">클릭!</button>
+
+    <br/>
+
+    <table>
+        <tr>
+            <td><img alt="test01"src="image/001.png"title="img01"id="selid"></td>
+            <td><img alt="test01"src="image/001.png"title="img02"></td>
+            <td><img alt="test01"src="image/001.png"title="img03"class="selclass"></td>
+            <td><img alt="test01"src="image/001.png"title="img04"class="selclass"></td>
+        </tr>
+        <tr>
+            <td><img alt="test01"src="image/001.png"title="img05"id="selid"></td>
+            <td><span><img alt="test01"src="image/001.png"title="img06"></span></td>
+            <td><span><img alt="test01"src="image/001.png"title="img07"class="selclass"></span></td>
+            <td><img alt="test01"src="image/001.png"title="img08"class="selclass"></td>
+        </tr>
+    </table>
+</body>
+</html>

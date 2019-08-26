@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    *{margin: 0px; padding: 0px;}
+    table{width: 400px;}
+    table tr:nth-child(1){background: orange;}
+    fieldset{width: 400px;}
+    body{width: 1000px; margin: 50px auto;}
+
+</style>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/create_table.js"></script>
+
+<script>
+    $(function(){
+        $("#emp_search").click(function(){
+            $.ajax({
+                url:"emplist.xml",
+                dataType:"xml",     // 없어도 동작은 하지만(알아서 찾아줘서) 혹시 같은이름이나 꼬일 수 있기 때문에 명시해주는것이 좋다.
+                success:function(data){
+                //    alert(data);
+                    var empRowList=$(data).find("ROW"); // find는 "ROW"의 자손들을 전부 가져와준다. 그래서 데이터가 다 딸려옴.
+                //    alert(empRowList[0]);   // 그냥 empRowList는 오브젝트지만 사실은 배열, [0]를 가져오면 엘리먼트[object Element]
+                    $("body").append(makeTable(empRowList));
+                },
+                error:function(){
+                    alert("통신 실패");
+                }
+            });
+        });
+    });
+
+
+</script>
+</head>
+<body>
+
+    <h1>데이터 가져오기</h1>
+
+    <fieldset>
+        <legend>사원 전체 조회</legend>
+        <input type="button" value="조회" id="emp_search"/>
+    </fieldset>
+    
+</body>
+</html>

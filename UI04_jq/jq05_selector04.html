@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+
+<script>
+
+    $(function(){
+
+        $("#signal").submit(function(){
+            // 유효성 검사
+            if($(".infobox").val()==null||$(".infobox").val()==""){
+                $(".error").show();
+                return false;
+            }
+        });
+
+        $("#confirm").click(function(){
+            $("#result").empty();
+            var sum = null;
+            if($("input[name=chk]:checked").length==0){
+                alert("하나 이상 체크해 주세요!");
+            } else {    //.each 앞에는 반복할 수 있는 것이 와야한다. 앞에 갯수만큼 each안의 변수가 갖고있음.
+                $("input[name=chk]:checked").each(function(asd){  // for each문과 같은 개념. function()안에는 아무 변수나 들어가도 상관없다. (배열로 만들어지나?)
+                    var chk = $("input[name=chk]:checked").eq(asd); // each function은 체크된 갯수, 체크된 해당 인덱스의 것을 가져와라.
+                    var book = chk.next().text();   // b tag가 가진 text => java, oracle, html/css
+                    var price = chk.val();
+                    $("#result").append(book+"가격 : "+price+"<br/>");
+                    sum += Number(price);   //parseInt(price, x); => price를 x진수로 바꿔라! 생략 시 10진수라 Number와 같은 역할
+                });
+                $("#result").append("총가격:"+sum);
+            } 
+            
+        });
+
+        $("input[name=chk]").click(function(){
+            
+            if($("input[name=chk]").length==$("input[name=chk]:checked").length){   // 전부 다 체크가 됬다면
+                $("input[name=all]").prop("checked", true); // 전체 선택 체크박스 선택(true)
+            } else{
+                $("input[name=all]").prop("checked", false);    // 전체 선택 체크박스 해제(false)
+            }
+        });
+    
+        
+    });
+
+    function allChk(bool){
+        //$("selector").each();
+        $("input[name=chk]").each(function(){
+            $(this).prop("checked",bool);   // 전체선택 bool값에 따라 each문을 돌린다? 여기서 chk는 3개.
+        }); // this는 빼온 값을 의미
+
+           
+    
+    }
+/*
+    attr("attrName") / prop("attrName") : 엘리먼트의 속성 값을 가져온다.
+    .attr() : HTML의 속성(attribute)
+    .prop() : JavaScript에서의 프로퍼티(property)
+
+    attr("attrName","attrValue") / prop("attrName", "attrValue") : 엘리먼트에 속성값을 넣어준다.
+
+*/
+ 
+  
+
+
+</script>
+
+</head>
+<body>
+
+    <form id="signal">
+        <div>
+            <span class="label">User ID</span>
+            <input type="text" class="infobox" name="userid"/>
+            <span class="error" hidden ="" style="color:red;">반드시 입력하세요</span>
+        </div>
+        <input type="submit" value="입력하기" />
+    </form>
+
+    <hr/>
+
+    <fieldset style="width: 300px">
+        <legend>체크 여부 확인</legend>
+
+        <input type="checkbox" name="all" onclick="allChk(this.checked);"/>전체 선택<br/>
+        <input type="checkbox" name="chk" value="20000"/><b>java</b><br/>
+        <input type="checkbox" name="chk" value="25000"/><b>oracle</b><br/>
+        <input type="checkbox" name="chk" value="30000"/><b>html</b><br/>
+
+        <input type="button" value="확인" id="confirm"/><br/>
+        <span>선택한 책 가격</span>
+        <div id="result"></div>
+    </fieldset>
+    
+</body>
+</html>

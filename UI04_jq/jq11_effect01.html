@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>jq11</title>
+
+    <style>
+        img{width: 200px; height: 200px; position: absolute; left: 200px; top: 100px;}
+        p{width: 100px; border: 1px solid red; position: absolute; left: 10px; display: none;}
+    </style>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>z
+    
+        $(function(){
+            $("b").click(function(){
+                $("p").toggle();
+                $("p").each(function(i){
+                    $(this).animate({
+                        "top":50*(i+1)+"px"
+                    }, 1000);
+                });
+            });
+            $("p").bind("click",function(){ 
+                var ele=$(this);
+                ele.css("background","hotpink");
+                ele.siblings("p").css("background-color","");   // siblings : 형제들(같은 레벨)의 값을 가져와주는 것. 여기서 p태그의 형제들은 p밖에 없어서 생략해줘도 같은 결과
+
+                if(ele.is("p:contains(hide)")){
+                    $("img").hide();
+                }
+                if(ele.is("p:contains(show)")){
+                    $("img").show();
+                }
+                if(ele.is("p:contains(toggle)")){
+                    $("img").toggle();
+                }
+                if(ele.is("p:contains(slideUp)")){
+                    $("img").slideUp(500);
+                }
+                if(ele.is("p:contains(slideDown)")){
+                    $("img").slideDown(1000);
+                }
+                if(ele.is("p:contains(fadeOut)")){  // fadeOut({"duration :"})... option은 이런식으로 써주면 됨
+                    $("img").fadeOut(3000);
+                }
+                if(ele.is("p:contains(fadeIn)")){
+                    $("img").fadeIn();
+                }
+                if(ele.is("p:contains(fadeToggle)")){
+                    $("img").fadeToggle();
+                }  
+                if(ele.is("p:contains(fadeTo)")){
+                    $("img").fadeTo(4000, 0.3);  //4초만에 투명도 0.3 단 fadeTo는 원래대로 되돌릴수 없다 !!
+                }                        
+                            // duration : A string or number determining how long the animation will run.
+                if(ele.is("p:contains(animate)")){  // .animate( properties [, duration ] [, easing ] [, complete ] )
+                    $("img").animate({"width":"500px","height":"500px","left":"600px","top":"0px"}, 2000);  // .animate( properties, options )
+                }   // properties : An object of CSS properties and values that the animation will move toward.
+            });     // options : A map of additional options to pass to the method.
+        });
+    
+    
+    </script>
+</head>
+<body>
+
+    <b>이펙트 메서드</b>
+
+    <div>
+        <p>hide()</p>
+        <p>show()</p>
+        <p>toggle()</p>
+        <p>slideUp()</p>
+        <p>slideDown()</p>
+        <p>fadeOut()</p>
+        <p>fadeIn()</p>
+        <p>fadeToggle()</p>
+        <p>fadeTo()</p>
+        <p>animate()</p>
+    </div>
+    <img alt="image" src="image/001.png" id="img1"/>
+
+
+
+
+
+
+
+    
+</body>
+</html>

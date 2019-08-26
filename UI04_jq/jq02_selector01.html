@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jq02</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+<script type="text/javascript">
+
+    $(function(){
+            $("div:eq(0)").css({"border":"1px solid red",
+                            "width":"400px","height":"200px"});
+        $("#view").css("border", "1px solid blue").css("width", "400px").css("height","100px");
+    });
+    
+    //tag
+    function a1(){
+        $("span").css("color","red");
+        $("#view").text('$("span").css("color", "red");');
+    }
+
+    // id
+    function a2(){
+        jQuery("#t1").css("color","hotpink");
+        jQuery("#view").text('jQuery(#t1).css("color","hotpink");');
+    }
+
+    // class
+    function a3(){
+        $(".t2").css("color","white").css("background-color","black");
+        $("#view").text('$(".t2").css("color","white").css("background-color","black");');
+        
+    }
+
+    // parend child => 3개 선택
+    function a4(){
+        $("li span").css("color","aquamarine");
+        $("#view").text('$("li span").css("color","aquamarine");');
+    }
+
+    // p > c => 2개 선택 (parent > child로 선택하기) 제외 !!
+    function a5(){
+        $("li > span").css("color","violet");
+        $("#view").text('$("li > span").css("color","violet");');
+    }
+
+    // nth-child
+    function a6(){  // n번째 자식들, odd => 홀수 번째 자식들, even => 짝수 번째 자식들
+        $("li:nth-child(even)").css("background-color","yellow");
+        $("#view").text(' $("li:nth-child(odd)").css("background-color","yellow");');
+    }
+
+    // first-child
+    function a7(){
+        $("li:first-child").css("background-color", "silver");
+        $("#view").text('$("li:first-child").css("background-color", "silver");');
+    }
+
+    function a8(){
+        $("li:last-child").css("background-color", "gold");
+        $("#view").text('$("li:last-child").css("background-color", "gold");');
+    }
+    
+    function cls(){
+        $("span").css("color", "black").css("background-color","white");
+        $("li").css("color", "black").css("background-color","white");
+        $("#view").text('$("*").css("color", "black").css("background-color","white");');
+    }
+
+</script>
+
+</head>
+<body>
+
+    <h1>selector 표현식</h1>
+
+    <div>
+        <ul>
+            <li><span>tag로 선택하기</span></li>
+            <li id="t1">id로 선택하기</li>
+            <li class="t2">class로 선택하기</li>
+            <li><span>parent child로 선택하기</span></li>
+            <li><b><span>parent &gt; child</span></b>로 선택하기</li>
+            <li>:nth-child(n/odd/even)로 선택하기</li>
+            <li>:first-child로 선택하기</li>
+            <li>:last-child로 선택하기</li>
+        </ul>
+    </div>
+
+    <div>
+        <button onclick="a1();">태그 선택(span)</button>
+        <button onclick="a2();">id선택(t1)</button>
+        <button onclick="a3();">class선택(t2)</button>
+        <button onclick="a4();">p c 선택</button>
+        <button onclick="a5();">p &gt; c 선택</button>
+        <button onclick="a6();">nth-child</button>
+        <button onclick="a7();">first-child</button>
+        <button onclick="a8();">last-child</button>
+        <br/>
+        <button onclick="cls();">reset</button>
+
+        <h2>코드 내용</h2>
+        <div id="view"></div>
+
+
+    </div>
+</body>
+</html>

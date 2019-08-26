@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>jq07</title>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("div").find("b").css({"font-size":"30px","color":"pink"});
+            $("div").children("#chd").text("2.children() 메서드");
+            $("p").parent().css("background-color","skyblue");
+            $("p>b").parents("div").css("color","hotpink"); // parents 이기때문에 p의 부모들이 전부 잡히지만 여기서는 "div"라고 선언해놨기 때문에 div가잡힌다.(div가 복수이면 전부 다 잡는다.)
+            $("p").eq(0).next().css("font-size","30px").css("color","red"); // p의 0번째인덱스인 1을 잡아줬는데 next(같은라인, 형제의 다음 값)가 있기 때문에 p의 1번째인 2가 css속성으로 변한다.
+        });
+    
+    </script>
+</head>
+<body>
+
+    <pre>
+        <b>
+            find("selector") :
+            선택한 엘리먼트의 자손들 중에 탐색하고자 하는 엘리먼트를 찾는다.
+        </b>
+        <b>
+            children("selector") :
+            선택한 엘리먼트의 자식요소들 중에 탐색호자 하는 엘리먼트를 찾는다.
+        </b>
+        <b>
+            parent() / parents("selector") :
+            선택한 엘리먼트의 부모요소를 찾는다.
+        </b>
+        <b>
+            next("selector") :
+            선택한 엘리먼트 다음에 따라오는 요소를 찾는다.
+        </b>
+    </pre>
+
+    <div>
+        <p><b>1</b></p>
+        <p id="chd">2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+    </div>
+    
+    
+</body>
+</html>

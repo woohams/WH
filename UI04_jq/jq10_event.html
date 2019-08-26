@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq10</title>
+
+    <style>
+        div{
+            width: 400px;
+            height: 200px;
+            border: 2px solid red;
+            padding: 20px;
+            overflow: auto;
+        }
+        div p:first-child{
+            float: left;
+            border: 1px solid blue;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+        }
+        div p:last-child{
+            float: right;
+            border: 1px solid blue;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+        }
+    </style>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+<script>
+
+    /*
+        이벤트 전파 : 각 요소가 서로 포함관계(중첩)인 경우 요소 중 하나에 이벤트가 발생하면 중첩된 요소들도 이벤트가 전파된다.
+        이벤트 전파 막기 :   
+                        -stopPropagation()  : 이벤트 요소의 전파 막기
+                        -preventDefault()   : 이벤트에 의한 기본 동작 막기
+                        -return false       : 위의 기능 두개 모두 적용
+    */
+
+    $(function(){
+        $("a:eq(0)").click(function(e){
+            alert("a 클릭!");
+         //   e.stopPropagation();    // 전파 막기 => 기존 a, p, div클릭이 전부 떳는데 a클릭만 뜨고 naver로 이동
+         //   e.preventDefault();     // naver로 안가짐. (a, b, div클릭이 전부 뜨고)
+         //   return false;           // a클릭만 뜨고 naver로 안가짐
+        });
+        $("p").click(function(e){
+            alert("p 클릭!");
+        //    e.stopPropagation();    
+        });
+        $("div").click(function(){
+            alert("div 클릭!");
+        });
+
+        /*$("a:eq(1)").bind("mouseover mouseout",function(e){ // mouse hover이벤트(In, Out)
+            if(e.type=="mouseover"){
+                $(this).css("color","green");
+            }
+            if(e.type=="mouseout"){
+                $(this).css("color","skyblue");
+            }
+        });*/
+        $("a:eq(1)").bind({
+            "mouseover":function(){
+                $(this).css("background-color","green");
+            },
+            "mouseout":function(){
+                $(this).css("background-color","skyblue");
+            }
+        });
+        $("span").click(function(){
+            alert("span 출력!");
+            $("a:eq(1)").unbind();
+        });
+
+        $("button").click(function(){
+            $("body").append("<p>새로 추가된 p태그</p>");
+        });
+        $("body").on("click",">p",function(){       // on으로 걸어주면 새로 추가되는 얘들도 event를 걸어 줄 수 있다. .on( events [, selector ] [, data ], handler )
+            alert("새로 추가된 요소도 이벤트 적용!");                                                       //      .on( events [, selector ] [, data ] )
+        });
+    });
+
+    var count = 0;
+    $( "body" ).on( "click", "p", function() {
+    $( this ).after( "<p>Another paragraph! " + (++count) + "</p>" );
+    });
+
+</script>
+
+</head>
+<body>
+
+    <span>unbind() : 이벤트 해제</span>
+    <div>
+        <p>
+            <a href="https://www.naver.com">클릭!</a>
+        </p>
+        <p>클릭</p>
+    </div>
+    <div>
+        <p>
+            <a href="https://www.google.com">클릭!</a>
+        </p>
+        <p>클릭</p>
+    </div>
+
+
+    <p>test</p>
+
+    <button>요소 추가</button>
+
+
+
+    
+</body>
+</html>
